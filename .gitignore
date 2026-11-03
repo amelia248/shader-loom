@@ -12,7 +12,7 @@ idk.c
 *.json
 *.ps1
 *.txt
-*.md
+Untitled*.md
 
 assets/textures/16x16 font.png
 assets/textures/ascii.png
