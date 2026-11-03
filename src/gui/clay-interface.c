@@ -11,6 +11,7 @@
 #include <stdio.h>
 #include <stddef.h>
 #include <stdint.h>
+#include <time.h>
 
 #include <memory.h>
 #include <maths.h>
@@ -256,14 +257,23 @@ void phguiRender() {
 				phSetUniformf("projection", 'm4x4', win->primitives.matrices.projection);
 
 				phSetUniformf("iResolution", 'v3', (double)bb.w, (double)bb.h, 1.0);
-				double time = phGetTime();
-				phSetUniformf("iTime",       '1f',  time);
+				double appTime = phGetTime();
+				phSetUniformf("iTime",       '1f',  appTime);
 				// printf("%f\n", time);
 				// phSetUniformf(c_string_t name, uint32_t fmt, ...)
 				phSetUniformf("iTimeDelta",  '1f',  (double)phGetDeltaTime());
 				phSetUniformf("iFrameRate",  '1f',  (double)(1./phGetDeltaTime()));
 				phSetUniformf("iFrame",      'i',  (int)(phGetFrame()));
-				// phSetUniformf("iDate",       'v4',  year, month, day, seconds);
+				{
+					time_t now = time(NULL);         // Get current time
+					struct tm *t = localtime(&now);  // Convert to local time structure
+					phSetUniformf("iDate",       'v4',
+						(double)(t->tm_year),
+						(double)(t->tm_mon),
+						(double)(t->tm_mday),
+						(double)((t->tm_hour*60 + t->tm_min)*60 + t->tm_sec)
+					);
+				}
 				extern bool canPanAndZoomShader;
 				if (!canPanAndZoomShader && phGetMousePosition().x >= bb.x && phGetMousePosition().y >= bb.y && phGetMousePosition().x <= bb.x+bb.w && phGetMousePosition().y <= bb.y+bb.h) {
 					bool isDown, clicked;
