@@ -1,0 +1,10 @@
+#ifndef PHOTON_PORTABLE_ERRORS_H
+#define PHOTON_PORTABLE_ERRORS_H
+
+typedef enum {
+	PH_ERR_SUCCESS   = 0b0000'0000,
+	PH_ERR_FAILURE   = 0b0000'0001,
+	PH_ERR_ALLOCATED = 0b0000'0010,
+} error_t;
+
+#endif

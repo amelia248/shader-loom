@@ -1,0 +1,27 @@
+.vscode/*
+# include/*
+# lib/*
+shader-project/*
+*.bmp
+
+exported shader.png
+
+idk.c
+*.exe
+# *.dll
+*.json
+*.ps1
+*.txt
+*.md
+
+assets/textures/16x16 font.png
+assets/textures/ascii.png
+assets/textures/learn opengl.png
+assets/textures/mojangles.png
+assets/textures/mono.png
+assets/textures/playful icons.png
+assets/textures/test icons.png
+assets/textures/Vector.png
+assets/textures/wales.png
+
+assets/shaders/460/*
