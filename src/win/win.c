@@ -1,3 +1,4 @@
+#include <minwindef.h>
 #ifdef INTELLISENSE
 	#define GLAPI
 	#define APIENTRY
@@ -39,6 +40,11 @@ extern addressCache_t stringCache, matrixCache, shaderCache, meshCache, textureC
 extern addressStack_t meshStack, shaderStack, textureStack[PH_TEXTURE_GL_STACK_SLOTS_LEN], fontStack, scissorStack;
 void generatePrimitiveAssets();
 void generateRenderPassData();
+
+// enable optimus!
+__declspec(dllexport) DWORD NvOptimusEnablement = 1;
+__declspec(dllexport) int AmdPowerXpressRequestHighPerformance = 1;
+
 
 error_t phInitWindow(c_string_t title, int width, int height, int fps) {
 

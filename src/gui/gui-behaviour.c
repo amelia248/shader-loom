@@ -220,6 +220,7 @@ bool phguiSlider(Clay_ElementId id, double delta, double* timer, double* value, 
 	e->slider.timer  = phClamp_double(e->slider.timer, 0, 1);
 
 	if (!e->slider.grabbed && hovering && pressed) {
+		// clamp that
 		e->slider.grabbed = true;
 		justGrabbed     = true;
 
